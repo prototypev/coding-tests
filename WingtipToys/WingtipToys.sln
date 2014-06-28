@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WingtipToys", "WingtipToys\WingtipToys.csproj", "{14080A7A-A032-41F7-85A6-5B2C480675C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C12009E7-796F-4A71-BE35-AB5C6DC31DEB}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WingtipToys.Core.Test", "WingtipToys.Core.Test\WingtipToys.Core.Test.csproj", "{5E8EAEF7-AF2C-4FE7-8816-1F96ECB86543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WingtipToys.Core", "WingtipToys.Core\WingtipToys.Core.csproj", "{7B060CEC-0C00-44DE-A432-09E22C51A69A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WingtipToys.Test", "WingtipToys.Test\WingtipToys.Test.csproj", "{D77C4ACE-B359-4EE8-8D59-0CDC5220199D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14080A7A-A032-41F7-85A6-5B2C480675C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14080A7A-A032-41F7-85A6-5B2C480675C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14080A7A-A032-41F7-85A6-5B2C480675C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14080A7A-A032-41F7-85A6-5B2C480675C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8EAEF7-AF2C-4FE7-8816-1F96ECB86543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8EAEF7-AF2C-4FE7-8816-1F96ECB86543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8EAEF7-AF2C-4FE7-8816-1F96ECB86543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8EAEF7-AF2C-4FE7-8816-1F96ECB86543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B060CEC-0C00-44DE-A432-09E22C51A69A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B060CEC-0C00-44DE-A432-09E22C51A69A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B060CEC-0C00-44DE-A432-09E22C51A69A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B060CEC-0C00-44DE-A432-09E22C51A69A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D77C4ACE-B359-4EE8-8D59-0CDC5220199D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77C4ACE-B359-4EE8-8D59-0CDC5220199D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77C4ACE-B359-4EE8-8D59-0CDC5220199D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77C4ACE-B359-4EE8-8D59-0CDC5220199D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

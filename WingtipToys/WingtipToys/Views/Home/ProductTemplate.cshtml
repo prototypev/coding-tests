@@ -1,0 +1,26 @@
+﻿@using WingtipToys.Core.Entities
+@using WingtipToys.Core.Infrastructure.Utilities
+
+@{
+    string imagePathMemberName = ReflectionHelper.MembersOf<Product>.GetName(p => p.ImagePath);
+    string productIDMemberName = ReflectionHelper.MembersOf<Product>.GetName(p => p.ProductID);
+    string productNameMemberName = ReflectionHelper.MembersOf<Product>.GetName(p => p.ProductName);
+    string unitPriceMemberName = ReflectionHelper.MembersOf<Product>.GetName(p => p.UnitPrice);
+}
+
+<script type="text/template" id="product-template">
+    <tr>
+        <td>
+            <img border="1" height="75" src="/Images/<%= @imagePathMemberName %>" width="100">
+        </td>
+        <td>
+            <input type="hidden" name="@productIDMemberName" value="<%= @productIDMemberName %>" />
+            <%= @productNameMemberName %>
+            <br />
+            <span class="ProductPrice">
+                <strong>Price:</strong>
+                $<%= @unitPriceMemberName %>
+            </span>
+        </td>
+    </tr>
+</script>
