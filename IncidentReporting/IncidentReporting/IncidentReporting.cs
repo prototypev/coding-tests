@@ -44,47 +44,6 @@
 
             double totalIntersection = 0;
 
-            IList<Tuple<int, int>> nonOverlappingIncidents = RemoveOverlappingIncidents(incidents);
-
-            foreach (Tuple<int, int> incident in nonOverlappingIncidents)
-            {
-                int incidentStart = incident.Item1;
-                int incidentEnd = incident.Item2;
-                if (incidentStart <= queryEnd && incidentEnd >= queryStart)
-                {
-                    int intersectionStart = Math.Max(queryStart, incidentStart);
-                    int intersectionEnd = Math.Min(queryEnd, incidentEnd);
-                    totalIntersection += intersectionEnd - intersectionStart;
-                }
-            }
-
-            return totalIntersection / (queryEnd - queryStart);
-        }
-
-        /// <summary>
-        /// Removes the overlapping incidents.
-        /// </summary>
-        /// <param name="incidents">
-        /// A sequence of 2-item tuple. Each 2-item tuple corresponds to the trigger time and resolve time for an incident. Assumption: this sequence is sorted.
-        /// </param>
-        /// <returns>
-        /// The sequence of 2-item tuples, with overlaps removed.
-        /// </returns>
-        public static IList<Tuple<int, int>> RemoveOverlappingIncidents(IList<Tuple<int, int>> incidents)
-        {
-            if (incidents == null)
-            {
-                throw new ArgumentNullException("incidents");
-            }
-
-            if (incidents.Count <= 1)
-            {
-                // Optimization for case of 0 or 1 incidents
-                return incidents;
-            }
-
-            IList<Tuple<int, int>> nonOverlappingIncidents = new List<Tuple<int, int>>();
-
             Tuple<int, int> currentInterval = incidents[0];
             for (int i = 1; i < incidents.Count; i++)
             {
@@ -97,21 +56,47 @@
                 }
                 else
                 {
-                    nonOverlappingIncidents.Add(currentInterval);
+                    int intersection = GetQueryAndIntervalIntersection(query, currentInterval);
+                    totalIntersection += intersection;
 
                     currentInterval = incident;
                 }
             }
 
-            // All done, remember to add the last interval
-            nonOverlappingIncidents.Add(currentInterval);
+            // All done, remember to check the last interval
+            int lastIntersection = GetQueryAndIntervalIntersection(query, currentInterval);
+            totalIntersection += lastIntersection;
 
-            return nonOverlappingIncidents;
+            return totalIntersection / (queryEnd - queryStart);
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Gets the intersection of the query and interval.
+        /// </summary>
+        /// <param name="query">The query.</param>
+        /// <param name="interval">The interval.</param>
+        /// <returns>The intersection value.</returns>
+        private static int GetQueryAndIntervalIntersection(Tuple<int, int> query, Tuple<int, int> interval)
+        {
+            int queryStart = query.Item1;
+            int queryEnd = query.Item2;
+
+            int intervalStart = interval.Item1;
+            int intervalEnd = interval.Item2;
+
+            if (intervalStart <= queryEnd && intervalEnd >= queryStart)
+            {
+                int intersectionStart = Math.Max(queryStart, intervalStart);
+                int intersectionEnd = Math.Min(queryEnd, intervalEnd);
+                return intersectionEnd - intersectionStart;
+            }
+
+            return 0;
+        }
 
         /// <summary>
         /// Determines whether the specified incidents overlap.
