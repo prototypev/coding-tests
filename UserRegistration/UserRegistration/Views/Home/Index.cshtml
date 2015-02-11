@@ -1,0 +1,33 @@
+﻿@model UserRegistration.Core.Entities.User
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>New User Registration</title>
+    </head>
+    <body>
+        <div>
+              @using (Html.BeginForm("RegisterUser", "Home"))
+              {
+                  @Html.ValidationSummary(true)
+
+                  <div>
+                      @Html.LabelFor(model => model.UserName)
+                      @Html.EditorFor(model => model.UserName)
+                      @Html.ValidationMessageFor(model => model.UserName)
+                  </div>
+
+                  <div>
+                      @Html.LabelFor(model => model.Password)
+                      @Html.EditorFor(model => model.Password)
+                      @Html.ValidationMessageFor(model => model.Password)
+                  </div>
+                  
+                  <div>
+                      <input type="submit" value="Register"/>
+                  </div>
+              }
+        </div>
+    </body>
+</html>
